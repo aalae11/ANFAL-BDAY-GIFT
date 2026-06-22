@@ -1,0 +1,1682 @@
+.experience {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff8fb;
+  background:
+    radial-gradient(circle at 50% 12%, rgba(124, 60, 255, 0.26), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(255, 117, 183, 0.18), transparent 24%),
+    linear-gradient(180deg, #030106 0%, #0b0613 42%, #120713 100%);
+}
+
+.pageShell {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(255, 143, 200, 0.2), transparent 28%),
+    radial-gradient(circle at 50% 62%, rgba(255, 232, 241, 0.12), transparent 38%),
+    #020103;
+}
+
+.pinSection {
+  position: relative;
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(24px, 6vw, 64px);
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255, 143, 200, 0.2), transparent 28%),
+    radial-gradient(circle at 20% 70%, rgba(124, 60, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 80% 72%, rgba(244, 195, 107, 0.15), transparent 28%),
+    #020103;
+}
+
+.pinAura {
+  position: absolute;
+  width: min(520px, 86vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 214, 234, 0.26), transparent 34%),
+    radial-gradient(circle, rgba(124, 60, 255, 0.18), transparent 66%);
+  filter: blur(26px);
+}
+
+.pinCard {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 100%);
+  padding: clamp(26px, 6vw, 44px);
+  border: 1px solid rgba(255, 244, 223, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 117, 183, 0.05)),
+    rgba(8, 3, 12, 0.72);
+  box-shadow:
+    0 34px 88px rgba(0, 0, 0, 0.42),
+    0 0 58px rgba(255, 117, 183, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.pinCard p {
+  margin: 0 0 12px;
+  color: #f4c36b;
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pinCard h1 {
+  margin: 0 0 24px;
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 8vw, 4.4rem);
+  line-height: 0.9;
+  text-shadow: 0 0 26px rgba(255, 117, 183, 0.28);
+}
+
+.pinInputWrap {
+  position: relative;
+  display: block;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.pinInputWrap span {
+  display: block;
+  margin-bottom: 8px;
+  color: rgba(255, 248, 251, 0.58);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.pinDigitRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pinDigit {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 244, 223, 0.18);
+  border-radius: 8px;
+  color: #fff8fb;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 244, 223, 0.12), transparent 48%),
+    rgba(255, 255, 255, 0.075);
+  font-size: 1.7rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition: border-color 260ms ease, box-shadow 260ms ease, transform 260ms ease;
+}
+
+.pinDigit::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fff4df, #ff8fc8 58%, #f4c36b);
+  box-shadow: 0 0 20px rgba(255, 117, 183, 0.46);
+  opacity: 0;
+  transform: scale(0.45);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.pinDigit[data-filled="true"] {
+  border-color: rgba(244, 195, 107, 0.7);
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.24),
+    0 0 0 3px rgba(244, 195, 107, 0.12),
+    0 0 24px rgba(255, 117, 183, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+}
+
+.pinDigit[data-filled="true"]::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pinHiddenInput {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  opacity: 0;
+  color: transparent;
+  background: transparent;
+  caret-color: transparent;
+  font-size: 16px;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-text-fill-color: transparent;
+}
+
+.pinError {
+  display: block;
+  min-height: 22px;
+  margin-top: 12px;
+  color: #ff9fce;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.introAura {
+  position: absolute;
+  width: min(430px, 78vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 214, 234, 0.28), transparent 32%),
+    radial-gradient(circle, rgba(124, 60, 255, 0.2), transparent 60%);
+  filter: blur(24px);
+}
+
+.introContent {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 760px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.introEyebrow,
+.sectionHeader p,
+.giftCopy p {
+  margin: 0 0 14px;
+  color: #f4c36b;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.introTitle {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(3.1rem, 11vw, 7.8rem);
+  font-weight: 800;
+  line-height: 0.9;
+  text-shadow:
+    0 0 22px rgba(255, 117, 183, 0.36),
+    0 28px 70px rgba(0, 0, 0, 0.58);
+}
+
+.introSubtitle {
+  position: relative;
+  width: min(100%, 520px);
+  max-width: 520px;
+  margin: 20px auto 30px;
+  color: rgba(255, 248, 251, 0.72);
+  font-size: clamp(1rem, 4vw, 1.25rem);
+  line-height: 1.55;
+}
+
+.primaryButton {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 999px;
+  color: #16030d;
+  background: linear-gradient(135deg, #fff4df, #ff8fc8 48%, #f4c36b);
+  box-shadow:
+    0 18px 54px rgba(255, 117, 183, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  font-weight: 900;
+}
+
+.heroScene {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 5vw, 58px);
+}
+
+.giftStage {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: minmax(250px, 0.82fr) minmax(320px, 1.18fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 64px);
+}
+
+.giftCopy h2,
+.sectionHeader h2,
+.storyPanel h2,
+.finalSection h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.giftCopy h2 {
+  max-width: 560px;
+  font-size: clamp(3.2rem, 9vw, 7.2rem);
+  line-height: 0.86;
+}
+
+.giftCopy span {
+  display: block;
+  max-width: 430px;
+  margin-top: 24px;
+  color: rgba(255, 248, 251, 0.68);
+  font-size: clamp(1rem, 2vw, 1.12rem);
+  line-height: 1.75;
+}
+
+.canvasShell {
+  position: relative;
+  height: min(66vh, 620px);
+  min-height: 410px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(255, 221, 238, 0.22), transparent 30%),
+    radial-gradient(circle at 50% 62%, rgba(255, 117, 183, 0.2), transparent 42%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.015));
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 34px 90px rgba(0, 0, 0, 0.42);
+}
+
+.giftGif {
+  position: relative;
+  z-index: 2;
+  width: min(78%, 430px);
+  max-height: 86%;
+  display: block;
+  object-fit: contain;
+  border-radius: 8px;
+  filter:
+    drop-shadow(0 28px 58px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 34px rgba(255, 117, 183, 0.24));
+  pointer-events: none;
+  user-select: none;
+}
+
+.portalGlow,
+.portalOpen {
+  position: absolute;
+  inset: 8%;
+  pointer-events: none;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 240, 0.36), rgba(255, 117, 183, 0.12) 34%, transparent 68%);
+  filter: blur(14px);
+  opacity: 0.72;
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.portalOpen {
+  opacity: 1;
+  transform: scale(1.35);
+}
+
+.giftHitArea {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: transparent;
+}
+
+.pageControls {
+  position: fixed;
+  left: 50%;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 50;
+  display: grid;
+  grid-template-columns: auto minmax(90px, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  width: min(520px, calc(100% - 28px));
+  padding: 8px;
+  border: 1px solid rgba(255, 244, 223, 0.14);
+  border-radius: 999px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 117, 183, 0.04)),
+    rgba(7, 2, 11, 0.66);
+  box-shadow:
+    0 20px 54px rgba(0, 0, 0, 0.36),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+  transform: translateX(-50%);
+}
+
+.pageDots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.pageDot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 248, 251, 0.28);
+  box-shadow: 0 0 14px rgba(255, 117, 183, 0.12);
+  transition: width 260ms ease, background 260ms ease, box-shadow 260ms ease;
+}
+
+.pageDot[data-seen="true"] {
+  background: rgba(244, 195, 107, 0.56);
+}
+
+.pageDot[data-active="true"] {
+  width: 24px;
+  background: linear-gradient(90deg, #fff4df, #ff8fc8, #f4c36b);
+  box-shadow: 0 0 22px rgba(255, 117, 183, 0.44);
+}
+
+.pageDot:disabled {
+  opacity: 0.36;
+  cursor: not-allowed;
+}
+
+.pageBackButton,
+.pageContinueButton {
+  min-height: 40px;
+  border: 1px solid rgba(255, 244, 223, 0.16);
+  border-radius: 999px;
+  padding: 9px 15px;
+  font-size: 0.84rem;
+  font-weight: 900;
+}
+
+.pageBackButton {
+  min-width: 76px;
+  color: rgba(255, 248, 251, 0.78);
+  background: rgba(255, 255, 255, 0.075);
+}
+
+.pageContinueButton {
+  min-width: 126px;
+  color: #16030d;
+  background: linear-gradient(135deg, #fff4df, #ff8fc8 52%, #f4c36b);
+  box-shadow:
+    0 14px 34px rgba(255, 117, 183, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.pageBackButton:disabled,
+.pageContinueButton:disabled {
+  color: rgba(255, 248, 251, 0.42);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.gallerySection,
+.storySection,
+.letterSection,
+.finalSection {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(54px, 9vw, 110px) clamp(18px, 5vw, 64px);
+}
+
+.pageShell .heroScene,
+.pageShell .gallerySection,
+.pageShell .storySection,
+.pageShell .letterSection,
+.pageShell .finalSection {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: max(86px, calc(env(safe-area-inset-bottom) + 86px));
+}
+
+.pageShell .heroScene {
+  padding-top: clamp(22px, 5vw, 52px);
+}
+
+.pageShell .giftStage {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  width: min(720px, 100%);
+  gap: clamp(18px, 3vw, 28px);
+  text-align: center;
+}
+
+.pageShell .giftCopy h2 {
+  max-width: 720px;
+  font-size: clamp(3rem, 8vw, 6.4rem);
+}
+
+.pageShell .giftCopy span {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pageShell .canvasShell {
+  width: min(620px, 100%);
+  height: min(50vh, 500px);
+  min-height: 330px;
+}
+
+.pageShell .giftGif {
+  width: min(86%, 480px);
+}
+
+.pageShell .gallerySection {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  padding-top: clamp(24px, 4vw, 48px);
+}
+
+.pageShell .gallerySection .sectionHeader {
+  margin-bottom: 0;
+}
+
+.pageShell .gallerySection .sectionHeader h2 {
+  font-size: clamp(2.2rem, 6.6vw, 4.8rem);
+}
+
+.pageShell .gallerySubtitle {
+  margin-top: 8px;
+}
+
+.pageShell .carouselShell {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  align-items: center;
+  min-height: 0;
+}
+
+.pageShell .carouselViewport {
+  height: clamp(300px, 48vh, 560px);
+}
+
+.pageShell .carouselProgress {
+  margin: -18px auto 14px;
+}
+
+.pageShell .galleryCaption {
+  min-height: 118px;
+}
+
+.pageShell .galleryCaptionInner {
+  padding-top: clamp(16px, 3vw, 24px);
+  padding-bottom: clamp(18px, 3vw, 26px);
+}
+
+.pageShell .storyPanel {
+  min-height: 100%;
+  padding: 0 clamp(4px, 2vw, 20px);
+}
+
+.pageShell .letterSection {
+  padding-top: clamp(18px, 4vw, 48px);
+}
+
+.pageShell .finalSection {
+  justify-content: center;
+  gap: clamp(10px, 1.8vh, 18px);
+  padding-top: clamp(24px, 5vw, 52px);
+  padding-bottom: clamp(24px, 5vw, 52px);
+}
+
+.gallerySection {
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse at 50% 24%, rgba(255, 219, 237, 0.2), transparent 24%),
+    radial-gradient(ellipse at 46% 52%, rgba(255, 117, 183, 0.18), transparent 30%),
+    radial-gradient(ellipse at 16% 66%, rgba(124, 60, 255, 0.24), transparent 34%),
+    radial-gradient(ellipse at 86% 70%, rgba(244, 195, 107, 0.18), transparent 30%),
+    linear-gradient(180deg, rgba(3, 1, 6, 0.34), rgba(16, 5, 21, 0.9) 52%, #050207);
+}
+
+.gallerySection::before {
+  content: "";
+  position: absolute;
+  inset: 0 -22% 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(102deg, transparent 6%, rgba(255, 244, 223, 0.1) 24%, transparent 43%),
+    linear-gradient(252deg, transparent 16%, rgba(255, 117, 183, 0.12) 46%, transparent 68%),
+    radial-gradient(circle at 50% 46%, rgba(255, 248, 251, 0.1), transparent 26%);
+  filter: blur(24px);
+  opacity: 0.95;
+}
+
+.gallerySection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(3, 1, 6, 0.72), transparent 24%, transparent 72%, rgba(3, 1, 6, 0.76)),
+    radial-gradient(ellipse at center, transparent 38%, rgba(0, 0, 0, 0.48));
+}
+
+.sectionHeader {
+  width: min(760px, 100%);
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.sectionHeader h2 {
+  font-size: clamp(2.6rem, 8vw, 5.7rem);
+  line-height: 0.92;
+}
+
+.galleryKicker {
+  margin-bottom: 10px;
+  color: rgba(244, 195, 107, 0.92);
+  text-transform: none;
+  letter-spacing: 0.1em;
+}
+
+.gallerySection .sectionHeader {
+  margin-bottom: clamp(12px, 2.8vw, 26px);
+}
+
+.gallerySection .sectionHeader h2 {
+  text-shadow:
+    0 0 24px rgba(255, 117, 183, 0.34),
+    0 20px 60px rgba(0, 0, 0, 0.48);
+}
+
+.gallerySubtitle {
+  display: block;
+  width: min(520px, 100%);
+  margin: 16px auto 0;
+  color: rgba(255, 248, 251, 0.76);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.carouselShell {
+  position: relative;
+  z-index: 1;
+  width: min(1240px, 100%);
+  margin: 0 auto;
+}
+
+.carouselViewport {
+  --gallery-card-width: clamp(220px, 25vw, 340px);
+  position: relative;
+  height: clamp(460px, 55vw, 690px);
+  overflow: hidden;
+  perspective: 980px;
+  perspective-origin: 50% 42%;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.carouselViewport[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+.carouselViewport::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 9%;
+  width: min(720px, 82vw);
+  height: min(170px, 24vw);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 244, 223, 0.2), rgba(255, 117, 183, 0.11) 42%, transparent 72%);
+  filter: blur(24px);
+  transform: translateX(-50%) rotateX(72deg);
+}
+
+.carouselViewport::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: min(720px, 82vw);
+  height: min(210px, 25vw);
+  pointer-events: none;
+  border: 1px solid rgba(255, 244, 223, 0.14);
+  border-top-color: rgba(244, 195, 107, 0.34);
+  border-bottom-color: rgba(255, 117, 183, 0.18);
+  border-radius: 50%;
+  box-shadow:
+    0 0 34px rgba(255, 117, 183, 0.12),
+    inset 0 0 44px rgba(124, 60, 255, 0.1);
+  transform: translate(-50%, -50%) rotateX(76deg);
+  transform-style: preserve-3d;
+}
+
+.carouselAnchor {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.carouselStage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.carouselCard {
+  position: absolute;
+  left: 50%;
+  top: 44%;
+  width: var(--gallery-card-width);
+  aspect-ratio: 3 / 4;
+  appearance: none;
+  padding: 9px;
+  border: 1px solid rgba(255, 244, 223, 0.18);
+  border-radius: 8px;
+  color: inherit;
+  background:
+    linear-gradient(145deg, rgba(255, 244, 223, 0.18), rgba(255, 117, 183, 0.05) 42%, rgba(124, 60, 255, 0.06)),
+    rgba(8, 3, 13, 0.78);
+  box-shadow:
+    0 30px 74px rgba(0, 0, 0, 0.46),
+    0 0 44px rgba(255, 117, 183, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  cursor: pointer;
+  transform-origin: center center;
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  will-change: transform, opacity, filter;
+  transition:
+    transform 680ms cubic-bezier(0.18, 0.88, 0.22, 1),
+    opacity 680ms cubic-bezier(0.18, 0.88, 0.22, 1),
+    filter 680ms cubic-bezier(0.18, 0.88, 0.22, 1),
+    box-shadow 680ms cubic-bezier(0.18, 0.88, 0.22, 1);
+  filter: blur(var(--gallery-card-blur)) saturate(0.96) contrast(0.96);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carouselViewport[data-dragging="true"] .carouselCard {
+  cursor: grabbing;
+  transition: box-shadow 220ms ease, filter 220ms ease;
+}
+
+.carouselCard[data-visible="false"] {
+  pointer-events: none;
+}
+
+.carouselCard::before,
+.carouselCard::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(255, 244, 223, 0.28), rgba(255, 117, 183, 0.1)),
+    rgba(16, 5, 24, 0.82);
+  box-shadow: inset 0 0 18px rgba(255, 244, 223, 0.1);
+}
+
+.carouselCard::before {
+  top: 10px;
+  right: -10px;
+  width: 10px;
+  height: calc(100% - 20px);
+  border-radius: 0 5px 5px 0;
+  transform: rotateY(90deg);
+  transform-origin: left center;
+}
+
+.carouselCard::after {
+  left: 10px;
+  right: 10px;
+  bottom: -10px;
+  height: 10px;
+  border-radius: 0 0 5px 5px;
+  transform: rotateX(-90deg);
+  transform-origin: top center;
+}
+
+.carouselCard[data-active="true"] {
+  border-color: rgba(255, 244, 223, 0.34);
+  animation: galleryFocusPulse 1150ms ease both;
+  box-shadow:
+    0 48px 130px rgba(0, 0, 0, 0.62),
+    0 0 76px rgba(255, 117, 183, 0.34),
+    0 0 96px rgba(244, 195, 107, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  filter: blur(0) saturate(1.12) contrast(1.04);
+}
+
+.carouselCard:focus-visible {
+  outline: 2px solid rgba(244, 195, 107, 0.9);
+  outline-offset: 4px;
+}
+
+.carouselFrame {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.carouselFrame::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 12px;
+  background:
+    radial-gradient(ellipse at center, rgba(255, 214, 234, 0.3), rgba(255, 117, 183, 0.13) 38%, transparent 72%);
+  filter: blur(18px);
+  opacity: 0;
+  transform: translateZ(-18px);
+  transition: opacity 780ms ease;
+}
+
+.carouselCard[data-active="true"] .carouselFrame::before {
+  opacity: 1;
+}
+
+.carouselFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-radius: 6px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.22), transparent 26%),
+    linear-gradient(95deg, transparent 0 56%, rgba(255, 244, 223, 0.12) 66%, transparent 76%),
+    linear-gradient(0deg, rgba(3, 1, 6, 0.24), transparent 42%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+}
+
+.carouselImage,
+.carouselReflection {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.carouselImage {
+  position: relative;
+  z-index: 0;
+}
+
+.carouselReflection {
+  position: absolute;
+  left: 8%;
+  top: calc(100% + 10px);
+  width: 84%;
+  height: 30%;
+  pointer-events: none;
+  opacity: 0.18;
+  filter: blur(1.4px) saturate(0.72);
+  transform: scaleY(-1);
+  transform-origin: top;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.48), transparent 78%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.48), transparent 78%);
+}
+
+.carouselProgress {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  width: min(460px, 100%);
+  margin: -30px auto 24px;
+}
+
+.carouselProgress > span {
+  color: rgba(255, 248, 251, 0.58);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.carouselProgress > small {
+  margin-top: -4px;
+  color: rgba(244, 195, 107, 0.7);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.carouselDots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 92px;
+}
+
+.carouselDot {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 248, 251, 0.32);
+  box-shadow: 0 0 18px rgba(255, 117, 183, 0.18);
+  transition: width 300ms ease, background 300ms ease, box-shadow 300ms ease;
+}
+
+.carouselDot[data-active="true"] {
+  width: 26px;
+  background: linear-gradient(90deg, #fff4df, #ff75b7, #f4c36b);
+  box-shadow: 0 0 24px rgba(255, 117, 183, 0.42);
+}
+
+.galleryCaption {
+  position: relative;
+  z-index: 2;
+  width: min(720px, 100%);
+  min-height: 158px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.galleryCaptionInner {
+  position: relative;
+  padding: clamp(22px, 4vw, 34px) clamp(20px, 5vw, 48px);
+  border: 1px solid rgba(255, 244, 223, 0.14);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 117, 183, 0.05)),
+    rgba(7, 2, 11, 0.58);
+  box-shadow:
+    0 28px 78px rgba(0, 0, 0, 0.36),
+    0 0 58px rgba(255, 117, 183, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(18px);
+}
+
+.galleryCaptionInner::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -1px;
+  width: min(230px, 48%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244, 195, 107, 0.92), transparent);
+  transform: translateX(-50%);
+}
+
+.galleryCaptionIndex {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(244, 195, 107, 0.88);
+  font-size: 0.74rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.galleryCaption h3 {
+  margin: 0 0 12px;
+  color: #fff4df;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5.2vw, 3.6rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-shadow:
+    0 0 26px rgba(255, 117, 183, 0.26),
+    0 16px 42px rgba(0, 0, 0, 0.38);
+}
+
+.galleryCaption p {
+  margin: 0 auto;
+  width: min(560px, 100%);
+  color: rgba(255, 248, 251, 0.84);
+  font-size: clamp(1.04rem, 2.5vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.gallerySecret {
+  display: block;
+  width: min(520px, 100%);
+  margin: 14px auto 0;
+  color: #fff4df;
+  font-size: clamp(0.9rem, 2vw, 1.02rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-shadow:
+    0 0 18px rgba(255, 117, 183, 0.42),
+    0 0 28px rgba(244, 195, 107, 0.16);
+}
+
+.storySection {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(124, 60, 255, 0.14), transparent 26%),
+    radial-gradient(circle at 86% 72%, rgba(255, 117, 183, 0.18), transparent 28%);
+}
+
+.storyPanel {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.storyPanel span {
+  display: block;
+  margin-bottom: 20px;
+  color: #f4c36b;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.storyPanel h2 {
+  max-width: 900px;
+  font-size: clamp(3rem, 9vw, 8rem);
+  line-height: 0.9;
+}
+
+.letterSection {
+  display: grid;
+  place-items: center;
+}
+
+.letterEnvelope {
+  width: min(760px, 100%);
+  min-height: 520px;
+  max-height: calc(100dvh - 150px);
+  display: grid;
+  place-items: center;
+  padding: clamp(12px, 3vw, 22px);
+  border-radius: 8px;
+  background:
+    linear-gradient(145deg, rgba(255, 244, 223, 0.12), rgba(255, 117, 183, 0.06)),
+    rgba(8, 3, 11, 0.76);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.4);
+  perspective: 900px;
+}
+
+.letterPaper {
+  width: min(620px, calc(100% - 28px));
+  max-height: calc(100dvh - 220px);
+  overflow-y: auto;
+  padding: clamp(26px, 6vw, 54px);
+  border-radius: 8px;
+  color: #190711;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 244, 223, 0.96)),
+    #fff4df;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.letterPaper p {
+  margin: 0 0 18px;
+  font-family: var(--font-display);
+  font-size: clamp(1.02rem, 2.5vw, 1.34rem);
+  line-height: 1.38;
+}
+
+.pageShell .letterEnvelope {
+  min-height: min(68vh, 500px);
+  max-height: calc(100dvh - 138px);
+}
+
+.pageShell .letterPaper {
+  max-height: calc(100dvh - 210px);
+  padding: clamp(18px, 4vw, 34px);
+}
+
+.pageShell .letterPaper p {
+  margin-bottom: 14px;
+}
+
+.finalSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(244, 195, 107, 0.2), transparent 28%),
+    radial-gradient(circle at 50% 62%, rgba(255, 117, 183, 0.18), transparent 32%),
+    #050207;
+}
+
+.finalSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(115deg, transparent 8%, rgba(255, 244, 223, 0.08) 30%, transparent 52%),
+    linear-gradient(245deg, transparent 18%, rgba(255, 117, 183, 0.09) 48%, transparent 72%);
+  filter: blur(16px);
+}
+
+.finalLights {
+  position: absolute;
+  inset: -20%;
+  background:
+    repeating-conic-gradient(from 0deg, rgba(244, 195, 107, 0.12) 0deg 5deg, transparent 5deg 16deg),
+    radial-gradient(circle, rgba(255, 117, 183, 0.22), transparent 42%);
+  opacity: 0.55;
+  filter: blur(8px);
+  animation: slowSpin 24s linear infinite;
+}
+
+.finalSection[data-wish-made="true"] .finalLights {
+  opacity: 0.78;
+  filter: blur(6px) saturate(1.18);
+}
+
+.finalCake {
+  position: relative;
+  z-index: 1;
+  width: min(390px, 68vw);
+  aspect-ratio: 382 / 480;
+  margin-bottom: clamp(8px, 1.6vh, 18px);
+  filter:
+    drop-shadow(0 30px 58px rgba(0, 0, 0, 0.52))
+    drop-shadow(0 0 52px rgba(255, 117, 183, 0.32));
+}
+
+.cakeGif {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+}
+
+.candleWishButton {
+  position: absolute;
+  left: 50%;
+  top: 0.5%;
+  z-index: 4;
+  width: 54px;
+  height: 98px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  transform: translateX(-50%);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.candleWishButton::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 14px;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 244, 223, 0.72), rgba(255, 117, 183, 0.28) 42%, transparent 72%);
+  filter: blur(8px);
+  opacity: 0.68;
+  transform: translateX(-50%);
+  transition: opacity 260ms ease, transform 260ms ease;
+}
+
+.candleWishButton::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 13px;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: conic-gradient(from -90deg, rgba(244, 195, 107, 0.88), rgba(255, 143, 200, 0.92), transparent 0);
+  opacity: 0;
+  transform: translateX(-50%) scale(0.82);
+}
+
+.candleWishButton[data-holding="true"]::before,
+.candleWishButton[data-wish-made="true"]::before {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.55);
+}
+
+.candleWishButton[data-holding="true"]::after {
+  opacity: 0.9;
+  animation: candleHoldRing 900ms linear forwards;
+}
+
+.candleWishButton[data-wish-made="true"]::after {
+  opacity: 0;
+}
+
+.candleFlame {
+  position: absolute;
+  left: 50%;
+  top: 21px;
+  width: 11px;
+  height: 17px;
+  border-radius: 999px 999px 999px 0;
+  background: linear-gradient(180deg, #fff4df, #ff8fc8 48%, #f4c36b);
+  box-shadow:
+    0 0 14px rgba(255, 244, 223, 0.84),
+    0 0 28px rgba(255, 117, 183, 0.58);
+  transform: translateX(-50%) rotate(42deg);
+  transform-origin: 50% 100%;
+  animation: candleFlicker 1.2s ease-in-out infinite alternate;
+}
+
+.candleWishButton[data-holding="true"] .candleFlame {
+  animation-duration: 0.42s;
+  transform: translateX(-50%) rotate(42deg) scale(1.18);
+}
+
+.candleWishButton[data-wish-made="true"] .candleFlame {
+  opacity: 0.45;
+  transform: translateX(-50%) rotate(42deg) scale(0.72);
+  animation: none;
+}
+
+.candlePrompt {
+  position: relative;
+  z-index: 2;
+  margin-top: -6px;
+  color: rgba(244, 195, 107, 0.78);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.finalSection h2 {
+  position: relative;
+  z-index: 1;
+  width: min(760px, 100%);
+  margin: 0;
+  font-size: clamp(3.1rem, 9vw, 7.4rem);
+  line-height: 0.86;
+  text-shadow:
+    0 0 26px rgba(255, 117, 183, 0.38),
+    0 24px 64px rgba(0, 0, 0, 0.52);
+}
+
+.finalSection p {
+  position: relative;
+  z-index: 1;
+  width: min(560px, 100%);
+  margin: 0 0 clamp(8px, 1.8vh, 22px);
+  color: rgba(255, 248, 251, 0.72);
+  font-size: clamp(1rem, 3vw, 1.25rem);
+  line-height: 1.7;
+}
+
+.finalWishReveal {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: min(620px, 100%);
+  margin: -4px auto 16px;
+  padding: 16px 20px;
+  border: 1px solid rgba(244, 195, 107, 0.22);
+  border-radius: 8px;
+  color: #fff4df;
+  background:
+    linear-gradient(145deg, rgba(255, 244, 223, 0.12), rgba(255, 117, 183, 0.06)),
+    rgba(8, 3, 12, 0.58);
+  box-shadow:
+    0 22px 60px rgba(0, 0, 0, 0.28),
+    0 0 46px rgba(255, 117, 183, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  font-size: clamp(0.96rem, 2.4vw, 1.15rem);
+  font-weight: 800;
+  line-height: 1.55;
+  backdrop-filter: blur(14px);
+}
+
+.finalSection .primaryButton {
+  position: relative;
+  z-index: 1;
+}
+
+.musicControl {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.musicControl button {
+  min-height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #fff8fb;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  backdrop-filter: blur(16px);
+}
+
+.musicControl span {
+  max-width: 170px;
+  color: rgba(255, 248, 251, 0.72);
+  font-size: 0.78rem;
+}
+
+@keyframes slowSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes candleFlicker {
+  0% {
+    filter: saturate(0.96);
+    opacity: 0.86;
+    transform: translateX(-50%) rotate(36deg) scale(0.94);
+  }
+  100% {
+    filter: saturate(1.14);
+    opacity: 1;
+    transform: translateX(-50%) rotate(48deg) scale(1.06);
+  }
+}
+
+@keyframes candleHoldRing {
+  from {
+    background: conic-gradient(from -90deg, rgba(244, 195, 107, 0.88) 0deg, transparent 0deg);
+  }
+  to {
+    background: conic-gradient(from -90deg, rgba(244, 195, 107, 0.88) 360deg, rgba(255, 143, 200, 0.92) 360deg);
+  }
+}
+
+@keyframes galleryFocusPulse {
+  0% {
+    box-shadow:
+      0 36px 92px rgba(0, 0, 0, 0.54),
+      0 0 22px rgba(255, 117, 183, 0.08),
+      0 0 28px rgba(244, 195, 107, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  45% {
+    box-shadow:
+      0 52px 138px rgba(0, 0, 0, 0.64),
+      0 0 94px rgba(255, 117, 183, 0.42),
+      0 0 116px rgba(244, 195, 107, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+  100% {
+    box-shadow:
+      0 48px 130px rgba(0, 0, 0, 0.62),
+      0 0 76px rgba(255, 117, 183, 0.34),
+      0 0 96px rgba(244, 195, 107, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  }
+}
+
+@media (max-width: 900px) {
+  .giftStage {
+    grid-template-columns: 1fr;
+  }
+
+  .giftCopy {
+    text-align: center;
+  }
+
+  .giftCopy span {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .canvasShell {
+    min-height: 360px;
+    height: 52vh;
+  }
+
+  .carouselViewport {
+    --gallery-card-width: clamp(176px, 38vw, 250px);
+    height: 530px;
+    perspective: 880px;
+  }
+
+  .carouselProgress {
+    margin-top: -12px;
+  }
+}
+
+@media (max-width: 560px) {
+  .intro {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .introTitle {
+    font-size: clamp(2.75rem, 10.5vw, 3.25rem);
+  }
+
+  .introSubtitle {
+    width: min(100%, 310px);
+    margin-top: 18px;
+    margin-bottom: 28px;
+  }
+
+  .heroScene,
+  .gallerySection,
+  .storySection,
+  .letterSection,
+  .finalSection {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .canvasShell {
+    min-height: 330px;
+  }
+
+  .pinCard {
+    padding: 24px 18px;
+  }
+
+  .pinDigitRow {
+    gap: 8px;
+  }
+
+  .pageShell .giftStage {
+    gap: 16px;
+  }
+
+  .pageShell .giftCopy h2 {
+    font-size: clamp(2.45rem, 10vw, 3.5rem);
+  }
+
+  .pageShell .giftCopy span {
+    margin-top: 14px;
+  }
+
+  .pageShell .canvasShell {
+    width: min(100%, 380px);
+    height: 38vh;
+    min-height: 280px;
+  }
+
+  .gallerySection {
+    min-height: auto;
+    padding-top: 74px;
+    padding-bottom: 88px;
+  }
+
+  .pageShell .gallerySection {
+    padding-top: 22px;
+    padding-bottom: 78px;
+  }
+
+  .gallerySection .sectionHeader {
+    margin-bottom: 18px;
+  }
+
+  .pageShell .gallerySection .sectionHeader {
+    margin-bottom: 0;
+  }
+
+  .pageShell .gallerySection .sectionHeader h2 {
+    font-size: clamp(2.1rem, 10vw, 3.25rem);
+  }
+
+  .pageShell .galleryKicker {
+    margin-bottom: 7px;
+    font-size: 0.68rem;
+  }
+
+  .pageShell .gallerySubtitle {
+    max-width: 300px;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .carouselViewport {
+    --gallery-card-width: clamp(144px, 45vw, 184px);
+    height: 430px;
+    perspective: 700px;
+  }
+
+  .pageShell .carouselViewport {
+    --gallery-card-width: clamp(138px, 43vw, 172px);
+    height: clamp(260px, 40vh, 340px);
+  }
+
+  .carouselCard {
+    padding: 7px;
+  }
+
+  .carouselCard {
+    top: 42%;
+  }
+
+  .carouselProgress {
+    gap: 10px;
+    margin: -10px auto 20px;
+  }
+
+  .carouselProgress > small {
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+  }
+
+  .galleryCaption {
+    min-height: 154px;
+  }
+
+  .pageShell .galleryCaption {
+    min-height: 122px;
+  }
+
+  .galleryCaptionInner {
+    padding: 20px 18px 24px;
+  }
+
+  .pageShell .galleryCaptionInner {
+    padding: 14px 14px 16px;
+  }
+
+  .galleryCaptionIndex {
+    margin-bottom: 8px;
+  }
+
+  .pageShell .galleryCaption h3 {
+    margin-bottom: 8px;
+    font-size: clamp(1.55rem, 8vw, 2.25rem);
+  }
+
+  .pageShell .galleryCaption p {
+    font-size: 0.94rem;
+    line-height: 1.48;
+  }
+
+  .pageShell .gallerySecret {
+    margin-top: 9px;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .letterEnvelope {
+    min-height: 460px;
+  }
+
+  .pageShell .letterEnvelope {
+    min-height: min(58vh, 390px);
+    max-height: calc(100dvh - 128px);
+    padding: 10px;
+  }
+
+  .pageShell .letterPaper {
+    width: 100%;
+    max-height: calc(100dvh - 190px);
+    padding: 18px 16px;
+  }
+
+  .pageShell .letterPaper p {
+    margin-bottom: 11px;
+    font-size: 0.92rem;
+    line-height: 1.34;
+  }
+
+  .pageShell .finalCake {
+    width: min(258px, 64vw);
+    margin-bottom: 8px;
+  }
+
+  .candleWishButton {
+    width: 46px;
+    height: 82px;
+  }
+
+  .candleWishButton::before {
+    top: 12px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .candleWishButton::after {
+    top: 11px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .candleFlame {
+    top: 18px;
+    width: 9px;
+    height: 14px;
+  }
+
+  .candlePrompt {
+    margin-top: -4px;
+    font-size: 0.62rem;
+    letter-spacing: 0.13em;
+  }
+
+  .pageShell .finalSection h2 {
+    font-size: clamp(2.35rem, 10.8vw, 3.7rem);
+  }
+
+  .pageShell .finalSection p {
+    width: min(320px, 100%);
+    margin-bottom: 10px;
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+
+  .pageShell .finalWishReveal {
+    width: min(320px, 100%);
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    font-size: 0.84rem;
+    line-height: 1.45;
+  }
+
+  .musicControl {
+    right: 12px;
+    bottom: 82px;
+  }
+
+  .pageControls {
+    width: calc(100% - 22px);
+    grid-template-columns: auto minmax(62px, 1fr) auto;
+    gap: 7px;
+    padding: 7px;
+  }
+
+  .pageDots {
+    gap: 5px;
+  }
+
+  .pageDot {
+    width: 6px;
+    height: 6px;
+  }
+
+  .pageDot[data-active="true"] {
+    width: 20px;
+  }
+
+  .pageBackButton,
+  .pageContinueButton {
+    min-height: 36px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .pageBackButton {
+    min-width: 68px;
+  }
+
+  .pageContinueButton {
+    min-width: 96px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pageShell,
+  .carouselStage,
+  .carouselCard,
+  .carouselDot,
+  .galleryCaption,
+  .gallerySecret,
+  .finalLights,
+  .finalWishReveal,
+  .candleWishButton::before,
+  .candleWishButton::after,
+  .candleFlame {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .carouselReflection {
+    display: none;
+  }
+}
